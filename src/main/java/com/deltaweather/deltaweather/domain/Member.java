@@ -1,4 +1,4 @@
 package com.deltaweather.deltaweather.domain;
 
-public class LocationEntity {
+public class Member {
 }
