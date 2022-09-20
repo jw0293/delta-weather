@@ -15,6 +15,7 @@ import java.io.IOException;
 @RequiredArgsConstructor
 @Log4j2
 @RestController
+// @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class MemberController {
 
     private final MemberService memberService;
@@ -24,7 +25,6 @@ public class MemberController {
         return "Success";
     }
 
-    @ResponseBody
     @PostMapping("/members")
     public ResponseEntity<String> signUp(@RequestBody SignUpDto signUpDto, HttpServletRequest request, HttpServletResponse response) throws IOException{
 
@@ -39,7 +39,7 @@ public class MemberController {
         } else{
             memberService.signUp(signUpDto);
             ResponseEntity.status(200);
-            response.sendRedirect("/");
+            // response.sendRedirect("/");
             return ResponseEntity.ok("회원가입에 성공하였습니다.");
         }
     }
