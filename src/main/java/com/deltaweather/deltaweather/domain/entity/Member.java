@@ -1,5 +1,6 @@
 package com.deltaweather.deltaweather.domain.entity;
 
+import com.deltaweather.deltaweather.domain.dto.UpdateMemberDto;
 import lombok.*;
 import org.springframework.stereotype.Component;
 
@@ -23,4 +24,10 @@ public class Member {
 
     @Column(name = "password")
     private String memberPassword;
+
+    public void update(UpdateMemberDto memberDto){
+        this.memberName = memberDto.getMemberName();
+        this.memberEmail = memberDto.getMemberEmail();
+        this.memberPassword = memberDto.getMemberPassword();
+    }
 }

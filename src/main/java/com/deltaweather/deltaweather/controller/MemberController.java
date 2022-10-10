@@ -1,11 +1,11 @@
 package com.deltaweather.deltaweather.controller;
 
 import com.deltaweather.deltaweather.domain.dto.SignUpDto;
+import com.deltaweather.deltaweather.domain.dto.UpdateMemberDto;
 import com.deltaweather.deltaweather.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,7 +15,6 @@ import java.io.IOException;
 @RequiredArgsConstructor
 @Log4j2
 @RestController
-// @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class MemberController {
 
     private final MemberService memberService;
@@ -39,8 +38,12 @@ public class MemberController {
         } else{
             memberService.signUp(signUpDto);
             ResponseEntity.status(200);
-            // response.sendRedirect("/");
             return ResponseEntity.ok("회원가입에 성공하였습니다.");
         }
+    }
+
+    @PatchMapping("/members")
+    public Long update(@PathVariable Long id, @RequestBody UpdateMemberDto memberDto){
+        return memberService.memberUpdate(id, memberDto);
     }
 }
