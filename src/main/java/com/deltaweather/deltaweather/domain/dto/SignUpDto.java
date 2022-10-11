@@ -1,8 +1,11 @@
 package com.deltaweather.deltaweather.domain.dto;
 
+import lombok.Builder;
+import lombok.Data;
 import lombok.Getter;
+import lombok.Setter;
 
-@Getter
+@Data
 public class SignUpDto {
 
     private String name;
